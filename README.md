@@ -2,6 +2,10 @@
 
 แดชบอร์ดรายงานความคืบหน้างานประจำวัน/สprint สำหรับหัวหน้างานและผู้บริหาร เน้นอ่านง่าย มืออาชีพ และอัปเดตได้รวดเร็วจากไฟล์ข้อมูลเดียว (`data/status.json`).
 
+[![Deploy GitHub Pages](https://github.com/ZanKinZuiTH/MDWorkFlow/actions/workflows/deploy.yml/badge.svg)](https://github.com/ZanKinZuiTH/MDWorkFlow/actions/workflows/deploy.yml)
+
+- Live Dashboard: https://zankinzuith.github.io/MDWorkFlow/
+
 ## โครงสร้าง
 - `index.html` หน้าแดชบอร์ดหลัก (รองรับ GitHub Pages)
 - `assets/style.css` สไตล์หลัก โทนมืออาชีพ อ่านง่าย
@@ -27,7 +31,7 @@ git push
 ```
 
 ## การแสดงผลบน GitHub Pages
-Workflow จะสร้างและเผยแพร่หน้าเว็บจากเนื้อหาใน repository ไปยัง Pages โดยอัตโนมัติ (branch `gh-pages`).
+Workflow จะสร้างและเผยแพร่หน้าเว็บจากเนื้อหาใน repository ไปยัง Pages โดยอัตโนมัติ (branch `gh-pages`). หากยังไม่แสดงผล ให้ตรวจสอบที่ Settings → Pages (Source: GitHub Actions).
 
 ## License
 MIT
