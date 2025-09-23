@@ -12,16 +12,39 @@
 </head>
 <body>
   <header class="app-header">
-    <div class="container">
-      <h1>MDWorkFlow</h1>
-      <p>ภาพรวมงานปัจจุบัน • สถานะ • ระยะเวลา • ขั้นตอน</p>
+    <div class="container header-flex">
+      <div>
+        <h1>MDWorkFlow</h1>
+        <p>ภาพรวมงานปัจจุบัน • สถานะ • ระยะเวลา • ขั้นตอน</p>
+      </div>
+      <div class="progress-block">
+        <div class="progress-label">ความคืบหน้า</div>
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+        </div>
+        <div class="progress-meta"><span id="progress-text">0%</span></div>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section id="summary" class="card">
-      <h2>ภาพรวมสถานะ</h2>
+      <div class="section-head">
+        <h2>ภาพรวมสถานะ</h2>
+        <div class="filters">
+          <span class="badge" id="period">—</span>
+          <span class="badge" id="project-status">—</span>
+        </div>
+      </div>
       <div id="overview" class="overview"></div>
+    </section>
+
+    <section id="today" class="card">
+      <div class="section-head">
+        <h2>สรุปวันนี้</h2>
+        <span class="badge" id="today-date">—</span>
+      </div>
+      <div id="today-summary" class="today-grid"></div>
     </section>
 
     <section id="timeline" class="card">
@@ -32,6 +55,11 @@
     <section id="tasks" class="card">
       <h2>งานที่กำลังทำ</h2>
       <div id="task-list" class="task-list"></div>
+    </section>
+
+    <section id="daily" class="card">
+      <h2>Daily Updates</h2>
+      <div id="daily-list" class="daily-list"></div>
     </section>
 
     <section id="changelog" class="card">

@@ -4,8 +4,15 @@
 .app-header{background:linear-gradient(180deg,#0b1020 0%,#0f1530 100%);border-bottom:1px solid #20284a}
 .app-header h1{margin:0;font-size:28px;font-weight:700}
 .app-header p{margin:6px 0 0;color:var(--muted)}
+.header-flex{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.progress-block{min-width:260px}
+.progress-label{font-size:12px;color:var(--muted);margin-bottom:6px}
+.progress{height:10px;background:#0e1730;border:1px solid #223064;border-radius:999px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,#4ea8de,#7cc7ff)}
+.progress-meta{margin-top:6px;font-size:12px;color:var(--muted)}
 .card{background:var(--card);border:1px solid #20284a;border-radius:12px;padding:18px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .card h2{margin:0 0 12px;font-size:18px}
+.section-head{display:flex;align-items:center;justify-content:space-between}
 .overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .kpi{background:#0f1832;border:1px solid #1f2b55;border-radius:10px;padding:14px}
 .kpi .label{color:var(--muted);font-size:12px}
@@ -23,6 +30,13 @@
 .state.in_progress{background:rgba(78,168,222,.15);color:#8bd3ff;border:1px solid #2a6aa0}
 .state.completed{background:rgba(46,204,113,.15);color:#97f7c0;border:1px solid #2a8f60}
 .state.pending{background:rgba(241,196,15,.15);color:#ffe089;border:1px solid #8a7321}
+.today-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.today-card{background:#0f1832;border:1px solid #1f2b55;border-radius:10px;padding:14px}
+.today-card .title{font-size:13px;color:var(--muted)}
+.today-card .value{font-size:18px;font-weight:700;margin-top:6px}
+.daily-list{display:grid;gap:10px}
+.daily-item{padding:12px;border-left:3px solid var(--accent);background:#0f1832;border-radius:6px}
+.daily-item .meta{font-size:12px;color:var(--muted);margin-top:4px}
 .changelog-list{display:grid;gap:10px}
 .c-item{padding:10px;border-left:3px solid var(--accent);background:#0f1832;border-radius:6px}
 .app-footer{border-top:1px solid #20284a;margin-top:24px}

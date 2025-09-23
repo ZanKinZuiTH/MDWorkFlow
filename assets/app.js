@@ -29,6 +29,22 @@ function renderOverview(root, data){
   });
 }
 
+function renderToday(root, today){
+  root.innerHTML='';
+  const items = [
+    {title:'สิ่งที่จะทำวันนี้', value:(today?.plan||'-')},
+    {title:'สิ่งที่ทำเสร็จ', value:(today?.done||'-')},
+    {title:'อุปสรรค/ความเสี่ยง', value:(today?.risks||'-')},
+    {title:'แผนถัดไป', value:(today?.next||'-')}
+  ];
+  items.forEach(i=>{
+    const card = el('div','today-card');
+    card.appendChild(el('div','title', i.title));
+    card.appendChild(el('div','value', i.value));
+    root.appendChild(card);
+  });
+}
+
 function renderMilestones(root, list){
   root.innerHTML='';
   (list||[]).forEach(m=>{
@@ -62,12 +78,44 @@ function renderChangelog(root, logs){
   });
 }
 
+function setProgress(percent){
+  const bar = document.getElementById('progress-bar');
+  const txt = document.getElementById('progress-text');
+  if(!bar||!txt) return;
+  const p = Math.max(0, Math.min(100, Number(percent)||0));
+  bar.style.width = p+'%';
+  txt.textContent = p+'%';
+}
+
+function setHeaderMeta(data){
+  const period = document.getElementById('period');
+  const status = document.getElementById('project-status');
+  const today = document.getElementById('today-date');
+  if(period) period.textContent = (data.project?.start||'?')+' → '+(data.project?.end||'?');
+  if(status) status.textContent = data.project?.status||'-';
+  if(today) today.textContent = new Date().toLocaleDateString('th-TH');
+}
+
+function renderDaily(root, daily){
+  root.innerHTML='';
+  (daily||[]).forEach(d=>{
+    const item = el('div','daily-item');
+    item.appendChild(el('div','title', d.title||'-'));
+    item.appendChild(el('div','meta', `${d.date||''} • ${d.owner||''}`));
+    root.appendChild(item);
+  });
+}
+
 (async function init(){
   try{
     const data = await fetchJSON('data/status.json');
+    setHeaderMeta(data);
+    setProgress(data.project?.progress??0);
     renderOverview(document.getElementById('overview'), data);
+    renderToday(document.getElementById('today-summary'), data.today);
     renderMilestones(document.getElementById('milestones'), data.milestones);
     renderTasks(document.getElementById('task-list'), data.tasks);
+    renderDaily(document.getElementById('daily-list'), data.daily);
     renderChangelog(document.getElementById('changelog-list'), data.changelog);
     document.getElementById('last-updated').textContent = data.updatedAt || new Date().toISOString();
   }catch(err){
